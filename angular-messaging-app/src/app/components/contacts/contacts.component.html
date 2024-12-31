@@ -1,1 +1,15 @@
-<p>contacts works!</p>
+<div class="container">
+    <mat-card class="contacts-card">
+      <mat-card-header>
+        <mat-card-title>Contacts</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul>
+          <li *ngFor="let contact of contacts" (click)="startChat(contact)">
+            {{ contact.username }}
+          </li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

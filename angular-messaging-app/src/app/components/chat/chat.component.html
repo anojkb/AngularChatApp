@@ -1,1 +1,19 @@
-<p>chat works!</p>
+<div class="container">
+    <mat-card class="chat-card">
+      <mat-card-header>
+        <mat-card-title>Chat with {{ selectedContact.username }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let message of messages">
+          <p><strong>{{ message.sender }}:</strong> {{ message.content }}</p>
+        </div>
+        <form (ngSubmit)="sendMessage()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Message</mat-label>
+            <input matInput type="text" [(ngModel)]="newMessage" name="message" required>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="full-width">Send</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  <!-- </[_{{{CITATION{{{_1{](https://github.com/ksv97/ChatClientMochalov/tree/46689edcefaeb40df6f1b119ef67c95ef42d7c16/src%2Fapp%2Fapp-routing.module.ts)[_{{{CITATION{{{_2{](https://github.com/kaneva91/SoftUniStudentJS/tree/0e95c3bf0d9835606242f776ef2f093f5f84e35a/04.Front-End%20Frameworks%202020%2F01.Angular%20-%20January%202020%2FWorkshops%2F02.Sofuni%20Donations%20Part%203%2Fapp-client%2Fsrc%2Fapp%2Fuser%2Fregister%2Fregister.component.ts)[_{{{CITATION{{{_3{](https://github.com/heyprateekag/bookofficeslot-frontend/tree/39a5c77c9aba65234035405d6e0573af5d129613/src%2Fapp%2Flogin%2Flogin.component.ts)[_{{{CITATION{{{_4{](https://github.com/CHINOUN/appl_angular/tree/49fff4e26927d7f0d4364bd699e0856765aeb065/src%2Fapp%2Fhome%2Fcontainer%2Flogin%2Flogin.component.ts)[_{{{CITATION{{{_5{](https://github.com/bruno-lk/Sistema-de-Vendas-Angular-Spring-Boot/tree/0a89282104c297ac95d83b515cf382adeaaa0539/clientes-app%2Fsrc%2Fapp%2Flogin%2Flogin.component.ts)[_{{{CITATION{{{_6{](https://github.com/rodolforomera/spring-angular/tree/2c04fef83d107d9d5a8677e066cfcb4bf41178d5/clientes-app%2Fsrc%2Fapp%2Flogin%2Flogin.component.ts)[_{{{CITATION{{{_7{](https://github.com/YunZhang2014/test/tree/d4818c214a037360bf2f2c0aae7a52b75dd8de12/frontendWeb%2FangularJsTest%2FanguarTest%2FAngularinAction2018Test%2Forigin%2Fc07-community-master%2Fsrc%2Fapp%2Flogin%2Flogin.component.ts)[_{{{CITATION{{{_8{](https://github.com/WalaaRahman/Shefaa/tree/f57aaf760ca2167568334a6eb36523d4809da65f/User%2Fsrc%2Fapp%2Fcomponents%2Fcontact-us%2Fcontacts%2Fcontacts.component.ts)[_{{{CITATION{{{_9{](https://github.com/sergey-voitenko/bike-shop/tree/a9711250175e2ca635b1593a20cb1c27c0f36162/src%2Fapp%2Fmodules%2Fcontact%2Fcontacts.component.ts)[_{{{CITATION{{{_10{](https://github.com/brinbh/ServiceActivitiesApp/tree/9e66a22fef807279c39137863a92c0f36320d33f/ServiceActivities%2Fsrc%2Fapp%2Fcontacts%2Fcontacts.component.ts)[_{{{CITATION{{{_11{](https://github.com/chengfuyi86/panda/tree/129892ade11d32c6e0be81947aaaa086f5a8ebcd/src%2Fapp%2Fcomponents%2Fchat%2Fchat.component.ts)[_{{{CITATION{{{_12{](https://github.com/dixonsatit/hello-angular/tree/d8dd04c03f60d7c981917a5219ebbfde2e16a347/src%2Fapp%2Fchat%2Fchat.component.ts) -->
