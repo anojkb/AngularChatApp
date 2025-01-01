@@ -1,0 +1,79 @@
+/* src/styles.css */
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card {
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d8ebe4e8
+}
+
+.mat-error { 
+    text-align: left; /* Ensure error messages align to the left */ 
+    margin-top: -5px; /* Adjust margin as needed */ 
+}
+
+mat-card-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+mat-card-title {
+    font-size: 1.5rem;
+    color: #3b5998;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+button.full-width {
+    background-color: #4c56af;
+    color: white;
+    font-weight: bold;
+    width: 35%;
+    display: block;
+    margin: 0 auto;
+}
+
+button.full-width:hover {
+    background-color: #45a049;
+}
+
+.signup-link, .login-link {
+    text-align: center;
+}
+
+.signup-link a, .login-link a {
+    color: #3b5998;
+    text-decoration: none;
+}
+
+.signup-link a:hover, .login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Make it responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .login-card, .register-card {
+        padding: 1rem;
+    }
+}
