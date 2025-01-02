@@ -33,12 +33,26 @@ export class RegisterComponent implements OnInit{
 }
 
 
-  onSubmit(): void { 
-    if (this.registerForm.valid) { 
-      const { username, password } = this.registerForm.value; 
-      // Handle form submission, e.g., save user details 
-      } 
-    } 
+onSubmit(): void { 
+  if (this.registerForm.valid) { 
+    const { username, password } = this.registerForm.value;
+    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    
+    // Ensure users is an array
+    if (!Array.isArray(users)) {
+      users = [];
+    }
+
+    // Add the new user to the list
+    users.push({ username, password });
+    // Save the updated list
+    localStorage.setItem('users', JSON.stringify(users));
+    alert('Registration successful!');
+    this.router.navigate(['/login']); 
+  } 
+}
+
+
     switchToLoginPage(): void { 
       this.router.navigate(['/login']); 
     } 

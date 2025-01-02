@@ -23,28 +23,20 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit(): void { 
-    // const users = JSON.parse(localStorage.getItem('users') || '[]'); 
-    // const user = users.find((u: { 
-    //   username: string; password: string 
-    // }) => u.username === this.username && u.password === this.password); 
-    // if (user) { 
-    //   localStorage.setItem('currentUser', JSON.stringify(user)); 
-    //   this.router.navigate(['/contacts']); 
-    // } else { 
-    //   alert('Invalid credentials'); 
-    // } 
-
     if (this.loginForm.valid) { 
       const { username, password } = this.loginForm.value; 
       const users = JSON.parse(localStorage.getItem('users') || '[]'); 
       const user = users.find((u: { username: string; password: string }) => u.username === username && u.password === password); 
       if (user) { 
         localStorage.setItem('currentUser', 
-        JSON.stringify(user)); this.router.navigate(['/contacts']); 
+        JSON.stringify(user)); 
+        this.router.navigate(['/contacts']); 
+      } else { 
+        alert('Invalid credentials'); 
       } 
-      else { alert('Invalid credentials'); } 
     }
   }
+  
 
   switchToSignupPage() { 
     this.router.navigate(['/register']); 
@@ -52,6 +44,7 @@ export class LoginComponent implements OnInit{
 
   noWhitespaceValidator(control: { value: any; }) { 
     const isWhitespace = (control.value || '').trim().length === 0; 
-    const isValid = !isWhitespace; return isValid ? null : { 'noWhitespace': true }; 
+    const isValid = !isWhitespace; 
+    return isValid ? null : { 'noWhitespace': true }; 
   }
 }
