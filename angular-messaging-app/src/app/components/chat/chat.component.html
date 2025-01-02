@@ -17,11 +17,10 @@
       </mat-card-content>
     </mat-card> -->
 
-    <div *ngIf="username">
-      <h2>Chat with {{ username }}</h2>
-      <div *ngFor="let message of messages">{{ message }}</div>
-      <input [(ngModel)]="newMessage" placeholder="Type a message" />
-      <button (click)="sendMessage()">Send</button>
+
+    <div *ngIf="selectedUser"> 
+       <div *ngFor="let message of messages"> {{ message }} </div> 
+       <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" /> 
     </div>
     
  

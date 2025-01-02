@@ -5,16 +5,14 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  private users = [ 
-      { username: 'currentuser' }, 
-      { username: 'user1' },
-      { username: 'user2' } 
-  ];
-  
-  getCurrentUser() { 
-    return this.users[0]; // Assuming the first user is the current user 
+  getCurrentUser() { // Replace with your logic to get the current logged in user 
+    return JSON.parse(localStorage.getItem('currentUser') || '{}'); 
   } 
+  
   getOtherUsers() { 
-    return this.users.slice(1); // All users except the first one 
+    let users = JSON.parse(localStorage.getItem('users') || '[]'); 
+    const currentUser = this.getCurrentUser(); 
+    console.log("hI::",currentUser);
+    return users.filter((user: any) => user.username !== currentUser.username); 
   }
 }

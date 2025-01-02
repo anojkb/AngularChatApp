@@ -1,0 +1,11 @@
+.current-user { 
+    font-weight: bold; 
+} 
+.other-user { 
+    cursor: pointer; 
+    padding: 10px; 
+    border-bottom: 1px solid #ccc; 
+} 
+.other-user:hover { 
+    background-color: #f0f0f0; 
+}

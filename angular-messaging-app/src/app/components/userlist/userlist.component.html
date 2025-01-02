@@ -1,0 +1,4 @@
+<div> 
+    <div class="current-user">{{ currentUser.username }}</div> 
+    <div *ngFor="let user of users" (click)="selectUser(user)" class="other-user"> {{ user.username }} </div> 
+</div>

@@ -1,40 +1,24 @@
-<!-- <div class="container">
-    <mat-card class="contacts-card">
-      <mat-card-header>
-        <mat-card-title>Contacts</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <ul>
-          <li *ngFor="let contact of contacts" (click)="startChat(contact)">
-            {{ contact.username }}
-          </li>
-        </ul>
-      </mat-card-content>
-    </mat-card>
-  </div> -->
-
-  <!-- <mat-list>
-    <mat-list-item *ngFor="let user of users" [routerLink]="['/chat', user.username]">
-      {{ user.username }}
-    </mat-list-item>
-  </mat-list> -->
-
-  <mat-list>
-    <!-- Display current user at the top -->
-    <mat-list-item *ngIf="currentUser" [routerLink]="['/chat', currentUser.username]">
-      {{ currentUser.username }}
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <!-- Display other users -->
-    <mat-list-item *ngFor="let user of otherUsers" [routerLink]="['/chat', user.username]">
-      {{ user.username }}
-    </mat-list-item>
-  </mat-list>
-  
-  <!-- Chat window on the right side -->
-  <div class="chat-window" *ngIf="selectedUser">
-    <app-chat [username]="selectedUser"></app-chat>
+<div class="container">
+  <div class="left-side">
+    <app-userlist (userSelected)="onUserSelected($event)"></app-userlist>
   </div>
+  <div class="right-side">
+    <app-chat *ngIf="selectedUser" [selectedUser]="selectedUser"></app-chat>
+  </div>
+</div>
+
+
+<!-- <div class="container">
+  <div class="left-side">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="right-side">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+
+
+  
   
   
   

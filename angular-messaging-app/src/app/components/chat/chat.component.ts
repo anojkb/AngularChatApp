@@ -65,25 +65,68 @@ export class ChatComponent implements OnInit {
   //     this.newMessage = ''; 
   //   } 
   // }
+// ****
+  // @Input() username!: string; 
+  // messages: any[] = []; 
+  // // messages: string[] = []; 
+  // newMessage: string = ''; 
+  
+  // constructor(private chatService: ChatService) {} 
+  
+  // ngOnInit(): void {
+  //    this.messages = this.chatService.getLast50Messages(this.username); 
+  // }
 
-  @Input() username!: string; 
-  messages: any[] = []; 
+  // sendMessage(): void { 
+  //   if (this.username && this.newMessage.trim()) { 
+  //     this.chatService.sendMessage(this.username, this.newMessage); 
+  //     this.messages = this.chatService.getMessages(this.username); 
+  //     this.newMessage = ''; 
+  //   } 
+  
+  // }
+
+  // ****
+
+  // @Input() selectedUser: any; 
   // messages: string[] = []; 
-  newMessage: string = ''; 
+  // newMessage: string = ''; 
   
-  constructor(private chatService: ChatService) {} 
+  // constructor(private route: ActivatedRoute) {} 
+  // ngOnInit() { 
+  //   this.route.params.subscribe(params => { 
+  //     this.selectedUser = params['username']; 
+  //   }); 
+  // } 
   
-  ngOnInit(): void {
-     this.messages = this.chatService.getLast50Messages(this.username); 
-  }
+  // sendMessage() { 
+  //   if (this.newMessage.trim()) { 
+  //     this.messages.push(this.newMessage); 
+  //     if (this.messages.length > 50) { 
+  //       this.messages.shift(); // Keep only the last 50 messages 
+  //     } 
+  //     this.newMessage = ''
+  //   } 
+  // }
 
-  sendMessage(): void { 
-    if (this.username && this.newMessage.trim()) { 
-      this.chatService.sendMessage(this.username, this.newMessage); 
-      this.messages = this.chatService.getMessages(this.username); 
-      this.newMessage = ''; 
+  // ****
+  // selectedUser: any; 
+  @Input() selectedUser: any; 
+  messages: string[] = []; 
+  newMessage: string = ''; 
+  constructor(private route: ActivatedRoute) {} 
+  ngOnInit() { 
+    this.route.params.subscribe(params => { 
+      this.selectedUser = params['username']; }); 
     } 
-  
-  }
+  sendMessage() { 
+    if (this.newMessage.trim()) { 
+        this.messages.push(this.newMessage); 
+        if (this.messages.length > 50) { 
+          this.messages.shift(); // Keep only the last 50 messages 
+        } 
+        this.newMessage = ''; 
+      }  
+    }
 }
 
