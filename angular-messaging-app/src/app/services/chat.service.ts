@@ -1,40 +1,24 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-// interface MessageDictionary { [key: string]: string[]; }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
 
-  // private users = JSON.parse(localStorage.getItem('users') || '[]'); 
-  // private messages: MessageDictionary = {}; 
+  private messagesSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]); 
+  private messages: string[] = []; 
+  constructor() {} 
 
-  // getUsers() { 
-  //   return this.users; 
-  // } 
-
-  getMessages(username: string) { 
-    if (!this.messages[username]) { 
-      this.messages[username] = []; 
+  sendMessage(message: string) { 
+    this.messages.push(message); 
+    if (this.messages.length > 50) { 
+      this.messages.shift(); // Keep only the last 50 messages 
+      }
+    this.messagesSubject.next([...this.messages]); // Emit a copy of the messages array 
     } 
-    return this.messages[username]; 
-  } 
-
-  sendMessage(username: string, message: string) { 
-    if (!this.messages[username]) { 
-      this.messages[username] = []; 
-    } 
-    this.messages[username].push(message); 
-  }
-
-  private messages: {[key: string]: string[]} = {
-    user1: ['hi'], // Replace with your messages 
-    user2: ['Hello'], 
-  };
-  
-  getLast50Messages(username: string) { 
-    const allMessages = this.messages[username] || []; 
-    return allMessages.slice(-50); // Get last 50 messages 
+    getMessages(): Observable<string[]> { 
+      return this.messagesSubject.asObservable(); 
     }
 }

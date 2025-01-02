@@ -8,4 +8,75 @@
 } 
 .other-user:hover { 
     background-color: #f0f0f0; 
+    width: 100%;
+    margin-left:auto;
 }
+
+// .container {
+//     max-width: 600px;
+//     margin: auto;
+//     padding: 20px;
+//     background-color: #f8f9fa;
+//     border-radius: 8px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//   }
+.containerList { 
+    height: 87vh; /* Full height of the viewport */ 
+    width: 30vw; /* 30% of the viewport width */ 
+    max-width: 100%; /* Ensure it doesn't exceed 100% width on smaller screens */ 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    // overflow-y: auto; /* Allow scrolling if content overflows */ 
+    top:7vh;
+    left: -1vh;
+    margin-left: 10px;
+    position: fixed !important;
+    overflow: hidden;
+}
+
+.list-container { 
+    height: calc(100vh - 160px); /* Adjust height based on the height of other elements */ 
+    overflow-y: auto; /* Allow scrolling if content overflows */ 
+}
+  
+  .current-user {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .user-list-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #343a40;
+  }
+  
+  .list-group {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .user-item {
+    font-size: 16px;
+    color: #495057;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-item:hover {
+    background-color: #e2e6ea;
+  }
+  
+  .user-item.active { background-color: #007bff; color: white; }
+

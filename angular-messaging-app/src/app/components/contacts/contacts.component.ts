@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChatService } from '../../services/chat.service';
+// import { ChatService } from '../../services/chat.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class ContactsComponent implements OnInit {
   selectedUser: any;
 
   constructor(private userService: UserService, private router: Router) {} 
+  // constructor(private router: Router) {} 
 
   ngOnInit(): void { 
     this.currentUser = this.userService.getCurrentUser(); 
@@ -24,7 +25,9 @@ export class ContactsComponent implements OnInit {
   }
 
   onUserSelected(user: any) { 
-    // this.router.navigate(['/contacts/chat', user.username]); 
     this.selectedUser = user;
+    console.log("selected user contact::",this.selectedUser);
+    this.router.navigate(['/contacts/chat', user.username]); 
+    
   }
 }

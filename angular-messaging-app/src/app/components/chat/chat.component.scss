@@ -2,3 +2,42 @@ input {
     width: 100%; 
     box-sizing: border-box; 
 }
+
+.chat-container { 
+    height: 87vh; /* Full height of the viewport */ 
+    width: 68vw; /* 30% of the viewport width */ 
+    max-width: 100%; /* Ensure it doesn't exceed 100% width on smaller screens */ 
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    // overflow-y: auto; /* Allow scrolling if content overflows */ 
+    top:11vh;
+    right: -1vh;
+    margin-right: 10px;
+    position: fixed !important;
+    overflow: hidden;
+}
+
+.chat-header { 
+    font-size: 18px; 
+    font-weight: bold; 
+    margin-bottom: 10px; 
+    padding: 10px; 
+    background-color: #007bff; 
+    color: white; 
+    text-align: center; 
+    border-radius: 5px; 
+}
+
+.messages { 
+    flex: 1; 
+    overflow-y: auto; 
+    margin-bottom: 10px; 
+} 
+
+.message { 
+    padding: 5px; 
+    border-bottom: 1px solid #ddd; 
+    overflow-y: auto;
+}

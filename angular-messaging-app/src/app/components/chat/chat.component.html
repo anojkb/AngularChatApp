@@ -1,26 +1,29 @@
-<!-- <div class="container">
-    <mat-card class="chat-card">
-      <mat-card-header>
-        <mat-card-title>Chat with {{ selectedContact.username }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div *ngFor="let message of messages">
-          <p><strong>{{ message.sender }}:</strong> {{ message.content }}</p>
-        </div>
-        <form (ngSubmit)="sendMessage()">
-          <mat-form-field appearance="outline" class="full-width">
-            <mat-label>Message</mat-label>
-            <input matInput type="text" [(ngModel)]="newMessage" name="message" required>
-          </mat-form-field>
-          <button mat-raised-button color="primary" type="submit" class="full-width">Send</button>
-        </form>
-      </mat-card-content>
-    </mat-card> -->
+<div *ngIf="selectedUser"  class="chat-container"> 
+  <div class="chat-header"> Chat with {{ selectedUser.username }} </div>
+  <div class="messages">
+    <div *ngFor="let message of messages" class="message"> 
+      {{ message }} 
+    </div> 
+  </div>
+  <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." /> 
+</div>
 
-
-    <div *ngIf="selectedUser"> 
-       <div *ngFor="let message of messages"> {{ message }} </div> 
-       <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" /> 
+<!-- <div *ngIf="selectedUser" class="chat-container"> -->
+  <!-- <div class="chat-header">
+    Chat with {{ selectedUser.username }}
+  </div>
+  <div class="messages">
+    <div *ngFor="let msg of messages" class="message">
+      {{ msg.sender }}: {{ msg.content }}
     </div>
+  </div>
+  <div class="message-input">
+    <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div> -->
+
+
+
     
  
