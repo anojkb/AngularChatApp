@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-contacts',
@@ -22,9 +23,22 @@ import { ChatService } from '../../services/chat.service';
 // }
 
 export class ContactsComponent implements OnInit { 
-  users: any[] = []; 
-  constructor(private chatService: ChatService) { } 
+  // users: any[] = []; 
+  // constructor(private chatService: ChatService) { } 
+  // ngOnInit(): void { 
+  //   this.users = this.chatService.getUsers(); 
+  // } 
+
+  currentUser: any; otherUsers: any[] = []; 
+  selectedUser: any; 
+  constructor(private userService: UserService, private router: Router) {} 
+  
   ngOnInit(): void { 
-    this.users = this.chatService.getUsers(); 
-  } 
+    this.currentUser = this.userService.getCurrentUser(); 
+    this.otherUsers = this.userService.getOtherUsers(); 
+    this.router.events.subscribe(() => { 
+      const currentRoute = this.router.url.split('/').pop(); 
+      this.selectedUser = currentRoute !== this.currentUser.username ? currentRoute : null; 
+    }); 
+  }
 }

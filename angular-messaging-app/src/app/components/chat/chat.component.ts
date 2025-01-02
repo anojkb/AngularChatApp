@@ -33,7 +33,7 @@
 //       }
 // }
 
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
 import { ChatService } from '../../services/chat.service';
 
@@ -46,25 +46,44 @@ import { ChatService } from '../../services/chat.service';
 })
 export class ChatComponent implements OnInit {
 
-  username: string | null = null; 
-  messages: string[] = []; 
+  // username: string | null = null; 
+  // messages: string[] = []; 
+  // newMessage: string = ''; 
+  
+  // constructor(private route: ActivatedRoute, private chatService: ChatService) { } 
+  
+  // ngOnInit(): void { 
+  //   this.username = this.route.snapshot.paramMap.get('username'); 
+  //   if (this.username) { 
+  //     this.messages = this.chatService.getMessages(this.username); 
+  //   } 
+  // } 
+  // sendMessage(): void { 
+  //   if (this.username && this.newMessage.trim()) { 
+  //     this.chatService.sendMessage(this.username, this.newMessage); 
+  //     this.messages = this.chatService.getMessages(this.username); 
+  //     this.newMessage = ''; 
+  //   } 
+  // }
+
+  @Input() username!: string; 
+  messages: any[] = []; 
+  // messages: string[] = []; 
   newMessage: string = ''; 
   
-  constructor(private route: ActivatedRoute, private chatService: ChatService) { } 
+  constructor(private chatService: ChatService) {} 
   
-  ngOnInit(): void { 
-    this.username = this.route.snapshot.paramMap.get('username'); 
-    if (this.username) { 
-      this.messages = this.chatService.getMessages(this.username); 
-    } 
-  } 
+  ngOnInit(): void {
+     this.messages = this.chatService.getLast50Messages(this.username); 
+  }
+
   sendMessage(): void { 
     if (this.username && this.newMessage.trim()) { 
       this.chatService.sendMessage(this.username, this.newMessage); 
       this.messages = this.chatService.getMessages(this.username); 
       this.newMessage = ''; 
     } 
-  }
   
+  }
 }
 
