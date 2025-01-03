@@ -15,5 +15,7 @@ export class WebSocketService {
    public sendMessage(msg: any): void { 
       this.socket$.next(msg); 
     } 
-    public getMessages(): Observable<any> { return this.socket$.asObservable(); }
+    public getMessages(): Observable<any> { 
+      return this.socket$.asObservable(); 
+    }
 }
