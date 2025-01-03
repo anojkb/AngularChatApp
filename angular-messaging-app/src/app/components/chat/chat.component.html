@@ -1,4 +1,4 @@
-<div *ngIf="selectedUser"  class="chat-container"> 
+<!-- <div *ngIf="selectedUser"  class="chat-container"> 
   <div class="chat-header"> Chat with {{ selectedUser.username }} </div>
   <div class="messages">
     <div *ngFor="let message of messages" class="message"> 
@@ -6,22 +6,37 @@
     </div> 
   </div>
   <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." /> 
-</div>
+</div> -->
 
-<!-- <div *ngIf="selectedUser" class="chat-container"> -->
-  <!-- <div class="chat-header">
-    Chat with {{ selectedUser.username }}
-  </div>
-  <div class="messages">
-    <div *ngFor="let msg of messages" class="message">
-      {{ msg.sender }}: {{ msg.content }}
+<div *ngIf="selectedUser" class="chat-container"> 
+  <div class="chat-header"> Chat with {{ selectedUser.username }} </div>
+  
+  <div class="messages-section">
+    <div class="messages">
+      <div *ngFor="let message of messages" class="message"> 
+        <!-- {{ message.sender }}: {{ message.content }}  -->
+        {{ message}} 
+      </div> 
     </div>
   </div>
-  <div class="message-input">
-    <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
-    <button (click)="sendMessage()">Send</button>
+
+  <div class="all-messages-section">
+    <h3>All Messages</h3>
+    <div class="all-messages">
+      <div *ngFor="let message of allMessages" class="message"> 
+        <!-- {{ message.sender }} to {{ message.receiver }}: {{ message.content }}  -->
+        {{ message.content }} 
+      </div>
+    </div>
   </div>
-</div> -->
+
+  <div class="message-input">
+    <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." /> 
+  </div>
+</div>
+
+
+
 
 
 
