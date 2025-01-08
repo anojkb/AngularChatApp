@@ -21,22 +21,12 @@ export class ChatComponent implements OnInit , OnChanges{
   constructor(private chatService: ChatService,private userService: UserService,private wsService: WebSocketService) {}
   ngOnInit() { 
     this.currentUser = this.userService.getCurrentUser();
+    this.loadMessagesForSelectedUser()
     console.log("user::",this.currentUser);
-    // this.chatService.getMessages().subscribe((messages: string[]) => { 
-    //   this.messages = messages; 
-    // }); 
-    // ***new
     this.wsService.getMessages().subscribe((message: any) => {
       const parsedMessage = JSON.parse(message); 
       this.allMessages.push(parsedMessage); 
       console.log("mes::",this.allMessages);
-      // if (message.sender === this.selectedUser.username 
-      //   || message.sender === this.currentUser.username) { 
-      //     this.messages.push(message); 
-      //   } 
-      // if (this.messages.length > 50) { 
-      //   this.messages.shift(); // Keep only the last 50 messages 
-      // } 
       if ((parsedMessage.sender === this.selectedUser.username && 
           parsedMessage.receiver === this.currentUser.username) || 
           (parsedMessage.sender === this.currentUser.username && 
@@ -47,18 +37,7 @@ export class ChatComponent implements OnInit , OnChanges{
         this.messages.shift(); // Keep only the last 50 messages 
       }
     });
-    // new***
   }
-  // sendMessage() { 
-  //   if (this.newMessage.trim()) { 
-  //     this.messages.push(this.newMessage); 
-  //     if (this.messages.length > 50) {
-  //        this.messages.shift(); // Keep only the last 50 messages 
-  //       } this.newMessage = ''; 
-  //     } 
-  //   }
-
-  // ****new
 
   ngOnChanges(changes: SimpleChanges) { 
     if (changes['selectedUser'] && !changes['selectedUser'].isFirstChange()) {
@@ -67,7 +46,6 @@ export class ChatComponent implements OnInit , OnChanges{
   }
 
   loadMessagesForSelectedUser() { 
-    // this.messages = []; 
     this.messages = this.allMessages.filter(msg => 
       (msg.sender === this.selectedUser.username && 
         msg.receiver === this.currentUser.username) || 
@@ -83,12 +61,87 @@ export class ChatComponent implements OnInit , OnChanges{
         content: this.newMessage, 
         timestamp: new Date() 
       }; 
-      // this.wsService.sendMessage(message);
       this.wsService.sendMessage(JSON.stringify(message));
+      // this.allMessages.push(message);
       this.messages.push(message.content); 
+      if (this.messages.length > 50) { 
+        this.messages.shift(); // Keep only the last 50 messages 
+      }
       this.newMessage = ''; 
     } 
   }
-  // new****
 }
+
+// export class ChatComponent implements OnInit, OnChanges {
+
+//   @Input() selectedUser: any; 
+//   messages: any[] = []; 
+//   allMessages: any[] = [];
+//   newMessage: string = ''; 
+//   currentUser: any;
+
+//   constructor(private wsService: WebSocketService, private userService: UserService) {}
+
+//   ngOnInit() { 
+//     this.currentUser = this.userService.getCurrentUser();
+//     console.log("user::", this.currentUser);
+
+//     // Fetch messages from localStorage
+//     const storedMessages = localStorage.getItem('allMessages');
+//     if (storedMessages) {
+//       this.allMessages = JSON.parse(storedMessages);
+//     }
+//     this.loadMessagesForSelectedUser();
+
+//     // Subscribe to incoming messages
+//     this.wsService.getMessages().subscribe((message: any) => {
+//       const parsedMessage = JSON.parse(message); 
+//       this.allMessages.push(parsedMessage); 
+      
+//       // Store messages in localStorage
+//       localStorage.setItem('allMessages', JSON.stringify(this.allMessages));
+//       console.log("Received message::", parsedMessage);
+
+//       if ((parsedMessage.sender === this.selectedUser.username && 
+//           parsedMessage.receiver === this.currentUser.username) || 
+//           (parsedMessage.sender === this.currentUser.username && 
+//             parsedMessage.receiver === this.selectedUser.username)) { 
+//               this.messages.push(parsedMessage); 
+//             } 
+//       if (this.messages.length > 50) { 
+//         this.messages.shift(); // Keep only the last 50 messages 
+//       }
+//     });
+//   }
+
+//   ngOnChanges(changes: SimpleChanges) { 
+//     if (changes['selectedUser'] && !changes['selectedUser'].isFirstChange()) {
+//       this.loadMessagesForSelectedUser(); 
+//     } 
+//   }
+
+//   loadMessagesForSelectedUser() { 
+//     this.messages = this.allMessages.filter(msg => 
+//       (msg.sender === this.selectedUser.username && 
+//         msg.receiver === this.currentUser.username) || 
+//     (msg.sender === this.currentUser.username &&
+//       msg.receiver === this.selectedUser.username)).slice(-50);
+//     console.log("Filtered messages::", this.messages);
+//   }
+
+//   sendMessage() { 
+//     if (this.newMessage.trim() && this.selectedUser) { 
+//       const message = { 
+//         sender: this.currentUser.username, 
+//         receiver: this.selectedUser.username, 
+//         content: this.newMessage, 
+//         timestamp: new Date() 
+//       }; 
+//       this.wsService.sendMessage(JSON.stringify(message));
+//       this.newMessage = ''; 
+//     } 
+//   }
+// }
+
+
 

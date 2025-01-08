@@ -1,20 +1,9 @@
-<!-- <div *ngIf="selectedUser"  class="chat-container"> 
-  <div class="chat-header"> Chat with {{ selectedUser.username }} </div>
-  <div class="messages">
-    <div *ngFor="let message of messages" class="message"> 
-      {{ message }} 
-    </div> 
-  </div>
-  <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." /> 
-</div> -->
-
 <div *ngIf="selectedUser" class="chat-container"> 
   <div class="chat-header"> Chat with {{ selectedUser.username }} </div>
   
   <div class="messages-section">
     <div class="messages">
       <div *ngFor="let message of messages" class="message"> 
-        <!-- {{ message.sender }}: {{ message.content }}  -->
         {{ message}} 
       </div> 
     </div>
@@ -24,7 +13,6 @@
     <h3>All Previous Messages</h3>
     <div class="all-messages">
       <div *ngFor="let message of allMessages" class="message"> 
-        <!-- {{ message.sender }} to {{ message.receiver }}: {{ message.content }}  -->
         {{ message.content }} 
       </div>
     </div>

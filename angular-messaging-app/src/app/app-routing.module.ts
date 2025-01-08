@@ -33,25 +33,6 @@ const routes: Routes = [
   { path: '**', component: PagenotfoundComponent }
 ];
 
-
-// const routes: Routes = [
-//   { path: 'register', component: RegisterComponent },
-//   { path: 'login', component: LoginComponent },
-//   {
-//     path: 'contacts',
-//     component: ContactsComponent,
-//     canActivate: [Authguard],
-//     children: [
-//       { path: '', component: UserlistComponent },
-//       { path: ':username', component: ChatComponent }
-//     ]
-//   },
-//   { path: '', redirectTo: '/login', pathMatch: 'full' },
-//   { path: '**', component: PagenotfoundComponent }
-// ];
-
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

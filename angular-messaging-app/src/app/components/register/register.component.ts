@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit{
   password: string = ''; 
   confirmPassword: string = ''; 
   hideConfirmPassword = true;
-  // passwordMatchValidator: any;
 
   constructor(private fb: UntypedFormBuilder,private router: Router) {  } 
 
@@ -33,6 +32,25 @@ export class RegisterComponent implements OnInit{
 }
 
 
+// onSubmit(): void { 
+//   if (this.registerForm.valid) { 
+//     const { username, password } = this.registerForm.value;
+//     let users = JSON.parse(localStorage.getItem('users') || '[]');
+    
+//     // Ensure users is an array
+//     if (!Array.isArray(users)) {
+//       users = [];
+//     }
+
+//     // Add the new user to the list
+//     users.push({ username, password });
+//     // Save the updated list
+//     localStorage.setItem('users', JSON.stringify(users));
+//     alert('Registration successful!');
+//     this.router.navigate(['/login']); 
+//   } 
+// }
+
 onSubmit(): void { 
   if (this.registerForm.valid) { 
     const { username, password } = this.registerForm.value;
@@ -43,14 +61,22 @@ onSubmit(): void {
       users = [];
     }
 
-    // Add the new user to the list
-    users.push({ username, password });
-    // Save the updated list
-    localStorage.setItem('users', JSON.stringify(users));
-    alert('Registration successful!');
-    this.router.navigate(['/login']); 
-  } 
+    // Check if the username already exists
+    const userExists = users.some((user: any) => user.username === username);
+
+    if (userExists) {
+      alert('Username already exists. Please choose a different username.');
+    } else {
+      // Add the new user to the list
+      users.push({ username, password });
+      // Save the updated list
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration successful!');
+      this.router.navigate(['/login']); 
+    }
+  }
 }
+
 
 
     switchToLoginPage(): void { 
@@ -69,7 +95,7 @@ onSubmit(): void {
       } else {
         formGroup.get('confirmPassword')?.setErrors(null);
       }
-      return null; // Ensure a return value is always provided
+      return null;
     }
 
       togglePasswordVisibility() { 

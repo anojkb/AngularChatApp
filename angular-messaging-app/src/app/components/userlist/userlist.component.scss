@@ -11,15 +11,6 @@
     width: 100%;
     margin-left:auto;
 }
-
-// .container {
-//     max-width: 600px;
-//     margin: auto;
-//     padding: 20px;
-//     background-color: #f8f9fa;
-//     border-radius: 8px;
-//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-//   }
 .containerList { 
     height: 90vh; /* Full height of the viewport */ 
     width: 30vw; /* 30% of the viewport width */ 
@@ -28,8 +19,7 @@
     background-color: #f8f9fa; 
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    // overflow-y: auto; /* Allow scrolling if content overflows */ 
-    top:7vh;
+    top:6%;
     left: -1vh;
     margin-left: 10px;
     position: fixed !important;
@@ -37,8 +27,8 @@
 }
 
 .list-container { 
-    height: calc(100vh - 160px); /* Adjust height based on the height of other elements */ 
-    overflow-y: auto; /* Allow scrolling if content overflows */ 
+    height: calc(100vh - 160px);  
+    overflow-y: auto;
 }
   
   .current-user {
