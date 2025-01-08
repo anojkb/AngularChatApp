@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
@@ -19,6 +19,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { UserlistComponent } from './components/userlist/userlist.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,8 @@ import { UserlistComponent } from './components/userlist/userlist.component';
     MatIconModule,
     ReactiveFormsModule,
     MatListModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    isDevMode() ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     provideAnimationsAsync()

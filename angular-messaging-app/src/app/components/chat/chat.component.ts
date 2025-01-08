@@ -1,8 +1,8 @@
 import { Component, Input, OnChanges, OnInit , SimpleChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; 
 import { ChatService } from '../../services/chat.service';
-import { UserService } from '../../services/user.service';
 import { WebSocketService } from '../../services/web-socket.service';
+import { UserService } from '../../services/userList.service';
 
 @Component({
   selector: 'app-chat',
