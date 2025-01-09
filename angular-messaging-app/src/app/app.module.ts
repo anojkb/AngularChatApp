@@ -46,8 +46,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatIconModule,
     ReactiveFormsModule,
     MatListModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    isDevMode() ? StoreDevtoolsModule.instrument() : [],
+    // StoreModule.forRoot(reducers, { metaReducers }),
+    // isDevMode() ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     provideAnimationsAsync()
