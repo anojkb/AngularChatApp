@@ -22,6 +22,10 @@ import { UserlistComponent } from './components/userlist/userlist.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { UsersEffects } from './users-effect.effects';
+// import { Effects } from './user.effects';
+// import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatListModule,
     // StoreModule.forRoot(reducers, { metaReducers }),
     // isDevMode() ? StoreDevtoolsModule.instrument() : [],
+    StoreModule.forRoot(reducers, { metaReducers }), 
+    EffectsModule.forRoot([UsersEffects]), 
+    // ...(environment.production ? [] : [StoreDevtoolsModule.instrument()])
   ],
   providers: [
     provideAnimationsAsync()
